@@ -7,11 +7,8 @@ check_list = []
 # print(check_list)
 
 #PRVI PRIMJER
-# relation.add("a")
-# relation.add("b")
-# relation.add("c")
-# relation = sorted(relation)
-# # print(relation)
+# relation.add("abc")
+# print(relation)
 
 # dependencies.add("a->b")
 # dependencies.add("b->a")
@@ -107,35 +104,26 @@ check_list = []
 # prime_key = sorted(prime_key)
 
 # SESTI PRIMJER
-# relation.add("a")
-# relation.add("b")
-# relation.add("c")
-# relation.add("d")
-# relation.add("e")
-# relation.add("f")
-# relation.add("g")
-# relation.add("i")
-# relation.add("j")
-# relation = sorted(relation)
+relation.add("abcdefgij")
 
-# dependencies.add("a->d")
-# dependencies.add("a->b") 
-# dependencies.add("ag->b")
-# dependencies.add("b->g")
-# dependencies.add("b->e")
-# dependencies.add("e->b")
-# dependencies.add("e->f")
-# dependencies.add("di->b")
-# dependencies.add("aj->f")
-# dependencies.add("gb->fje")
-# dependencies.add("aj->hd")
-# dependencies.add("i->cg")
-# dependencies = sorted(dependencies)
+dependencies.add("a->d")
+dependencies.add("a->b") 
+dependencies.add("ag->b")
+dependencies.add("b->g")
+dependencies.add("b->e")
+dependencies.add("e->b")
+dependencies.add("e->f")
+dependencies.add("di->b")
+dependencies.add("aj->f")
+dependencies.add("gb->fje")
+dependencies.add("aj->hd")
+dependencies.add("i->cg")
+dependencies = sorted(dependencies)
 
-# prime_key.add("abc")
-# prime_key.add("beg")
-# prime_key.add("ace")
-# prime_key = sorted(prime_key)
+prime_key.add("abc")
+prime_key.add("bai")
+prime_key.add("ace")
+prime_key = sorted(prime_key)
 
 def check_key(check_list):
     for key in prime_key:
@@ -187,8 +175,15 @@ def check_before_elements(third_nf_optimisation):
         third_form.append(check_prime_key)
         return third_form
     return third_form
+
+def print_all():
+    print ("Relation", relation)
+    print("Dependencies:",dependencies)
+    print("Prime_key:", prime_key)
+    print()
   
 check_dependencies()
+print_all()
 third_nf_optimisation = check_before_elements(third_nf_optimisation)
 print("p:", third_nf_optimisation)
 
