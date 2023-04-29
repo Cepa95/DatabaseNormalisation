@@ -103,52 +103,54 @@ check_list = []
 
 # prime_key.add("acg")
 # prime_key.add("abc")
+# prime_key.add("ag")
+# prime_key = sorted(prime_key)
+
+# SESTI PRIMJER
+# relation.add("a")
+# relation.add("b")
+# relation.add("c")
+# relation.add("d")
+# relation.add("e")
+# relation.add("f")
+# relation.add("g")
+# relation.add("i")
+# relation.add("j")
+# relation = sorted(relation)
+
+# dependencies.add("a->d")
+# dependencies.add("a->b") 
+# dependencies.add("ag->b")
+# dependencies.add("b->g")
+# dependencies.add("b->e")
+# dependencies.add("e->b")
+# dependencies.add("e->f")
+# dependencies.add("di->b")
+# dependencies.add("aj->f")
+# dependencies.add("gb->fje")
+# dependencies.add("aj->hd")
+# dependencies.add("i->cg")
+# dependencies = sorted(dependencies)
+
+# prime_key.add("abc")
+# prime_key.add("beg")
 # prime_key.add("ace")
 # prime_key = sorted(prime_key)
 
-#SESTI PRIMJER
-relation.add("a")
-relation.add("b")
-relation.add("c")
-relation.add("d")
-relation.add("e")
-relation.add("f")
-relation.add("g")
-relation.add("i")
-relation.add("j")
-relation = sorted(relation)
-
-dependencies.add("a->d")
-dependencies.add("a->b") 
-dependencies.add("ag->b")
-dependencies.add("b->g")
-dependencies.add("b->e")
-dependencies.add("e->b")
-dependencies.add("e->f")
-dependencies.add("di->b")
-dependencies.add("aj->f")
-dependencies.add("gb->fje")
-dependencies.add("aj->hd")
-dependencies.add("i->cg")
-dependencies = sorted(dependencies)
-
-prime_key.add("acg")
-prime_key.add("abc")
-prime_key.add("ace")
-prime_key = sorted(prime_key)
-
-
 def check_key(check_list):
     for key in prime_key:
-        key = sorted(key)
-        key = ''.join(key)
+        found_key = False
         for element in check_list:
-            if element.find(key) != -1 and check_list[-1]:
-                return
-            elif element.find(key) != -1:
-                continue
+            #iako je to vec sortirano, u ali u krajnjim slucajevima ako imamo  bg->fje, sto je sortirano befgj, 
+            #a da nam je kljuc beg, sa .issubsetom to lako mozemo provjeriti
+            if set(key).issubset(set(element)):
+                found_key = True
+        if found_key:
+            print("There is key already in the dependencies.")            
+            return None
     print("There is no key in the dependencies, adding:", key)
-    third_nf_optimisation.add(key)
+    return key
+   
 
 def check_dependencies():
     for element in dependencies:
@@ -163,7 +165,6 @@ def check_dependencies():
             third_nf_optimisation.add(element)
     # print(third_nf_optimisation)
     # print(check_list)
-    check_key(check_list)
     
 #u slucaju da smo ubacili clan na primjer u petom primjeru
 #a->b koji je podskup ag->b, a koji je naknadno ubacen, pa 
@@ -172,6 +173,7 @@ def check_dependencies():
 def check_before_elements(third_nf_optimisation):
     third_nf_optimisation = sorted(third_nf_optimisation)
     new_check = ["".join(sorted(substring.replace("->", ""))) if "->" in substring else substring for substring in third_nf_optimisation]
+    # provjera za sta imamo uneseno
     # print(new_check)
     substring_indexes = []
     for i, item in enumerate(new_check):
@@ -180,8 +182,13 @@ def check_before_elements(third_nf_optimisation):
                 substring_indexes.append(i)
     # print(substring_indexes)
     third_form = [element for i, element in enumerate(third_nf_optimisation) if i not in substring_indexes]
+    check_prime_key=check_key(new_check)
+    if check_prime_key is not None:
+        third_form.append(check_prime_key)
+        return third_form
     return third_form
-
-     
+  
 check_dependencies()
-print(check_before_elements(third_nf_optimisation))
+third_nf_optimisation = check_before_elements(third_nf_optimisation)
+print("p:", third_nf_optimisation)
+
