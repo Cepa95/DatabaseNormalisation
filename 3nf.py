@@ -118,6 +118,7 @@ dependencies.add("aj->f")
 dependencies.add("gb->fje")
 dependencies.add("aj->hd")
 dependencies.add("i->cg")
+dependencies.add("a->j")
 dependencies = sorted(dependencies)
 
 prime_key.add("abc")
@@ -162,11 +163,11 @@ def check_before_elements(third_nf_optimisation):
     third_nf_optimisation = sorted(third_nf_optimisation)
     new_check = ["".join(sorted(substring.replace("->", ""))) if "->" in substring else substring for substring in third_nf_optimisation]
     # provjera za sta imamo uneseno
-    # print(new_check)
+    print(new_check)
     substring_indexes = []
     for i, item in enumerate(new_check):
         for j, other_item in enumerate(new_check):
-            if i != j and item in other_item:
+            if i != j and (item in other_item or set(item).issubset(set(other_item))):
                 substring_indexes.append(i)
     # print(substring_indexes)
     third_form = [element for i, element in enumerate(third_nf_optimisation) if i not in substring_indexes]
@@ -177,9 +178,9 @@ def check_before_elements(third_nf_optimisation):
     return third_form
 
 def print_all():
-    print ("Relation", relation)
+    print ("Relation:", relation)
     print("Dependencies:",dependencies)
-    print("Prime_key:", prime_key)
+    print("Prime key:", prime_key)
     print()
   
 check_dependencies()
