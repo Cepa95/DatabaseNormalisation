@@ -7,7 +7,9 @@ check_list = []
 # print(check_list)
 
 #PRVI PRIMJER
-# relation.add("abc")
+# relation.add("a")
+# relation.add("b")
+# relation.add("c")
 # print(relation)
 
 # dependencies.add("a->b")
@@ -104,7 +106,16 @@ check_list = []
 # prime_key = sorted(prime_key)
 
 # SESTI PRIMJER
-relation.add("abcdefgij")
+relation.add("a")
+relation.add("b")
+relation.add("c")
+relation.add("d")
+relation.add("e")
+relation.add("f")
+relation.add("g")
+relation.add("h")
+relation.add("i")
+relation.add("j")
 
 dependencies.add("a->d")
 dependencies.add("a->b") 
@@ -163,7 +174,7 @@ def check_before_elements(third_nf_optimisation):
     third_nf_optimisation = sorted(third_nf_optimisation)
     new_check = ["".join(sorted(substring.replace("->", ""))) if "->" in substring else substring for substring in third_nf_optimisation]
     # provjera za sta imamo uneseno
-    print(new_check)
+    # print(new_check)
     substring_indexes = []
     for i, item in enumerate(new_check):
         for j, other_item in enumerate(new_check):
@@ -178,7 +189,9 @@ def check_before_elements(third_nf_optimisation):
     return third_form
 
 def print_all():
-    print ("Relation:", relation)
+    big_string = "".join(sorted(relation))
+    #da se izbjegne razmak od zagrada
+    print("Relation: [{}]".format(big_string))
     print("Dependencies:",dependencies)
     print("Prime key:", prime_key)
     print()
