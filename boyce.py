@@ -43,13 +43,6 @@ def check_dependencies():
             relations.check_value.append(element)
     check_key()
 
-def print_all():
-    big_string = "".join(sorted(relations.relation))
-    print("Relation: [{}]".format(big_string))
-    print("Dependencies:",relations.dependencies)
-    print("Prime key:", relations.prime_key)
-    print()
-
 
 printf.print_all()
 check_dependencies()
