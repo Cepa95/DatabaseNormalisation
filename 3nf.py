@@ -1,27 +1,26 @@
 relation = set()
-dependencies = set()
-prime_key = set()
+dependencies = []
+prime_key = []
 third_nf_optimisation = set()
 check_list = []
 # check_list.append(1)
 # print(check_list)
 
 #PRVI PRIMJER
-# relation.add("a")
-# relation.add("b")
-# relation.add("c")
-# print(relation)
+relation.add("a")
+relation.add("b")
+relation.add("c")
 
-# dependencies.add("a->b")
-# dependencies.add("b->a")
-# dependencies.add("a->c")
-# dependencies.add("c->a")
-# dependencies = sorted(dependencies)
-# # print(dependencies)
 
-# prime_key.add("a")
-# prime_key = sorted(prime_key)
-# # print(prime_key)
+dependencies.append("a->b")
+dependencies.append("b->a")
+dependencies.append("a->c")
+dependencies.append("c->a")
+dependencies = sorted(dependencies)
+
+prime_key.append("a")
+
+# print(prime_key)
 
 #DRUGI PRIMJER
 # relation.add("a")
@@ -106,36 +105,64 @@ check_list = []
 # prime_key = sorted(prime_key)
 
 # SESTI PRIMJER
-relation.add("a")
-relation.add("b")
-relation.add("c")
-relation.add("d")
-relation.add("e")
-relation.add("f")
-relation.add("g")
-relation.add("h")
-relation.add("i")
-relation.add("j")
+# relation.add("a")
+# relation.add("b")
+# relation.add("c")
+# relation.add("d")
+# relation.add("e")
+# relation.add("f")
+# relation.add("g")
+# relation.add("h")
+# relation.add("i")
+# relation.add("j")
 
-dependencies.add("a->d")
-dependencies.add("a->b") 
-dependencies.add("ag->b")
-dependencies.add("b->g")
-dependencies.add("b->e")
-dependencies.add("e->b")
-dependencies.add("e->f")
-dependencies.add("di->b")
-dependencies.add("aj->f")
-dependencies.add("gb->fje")
-dependencies.add("aj->hd")
-dependencies.add("i->cg")
-dependencies.add("a->j")
-dependencies = sorted(dependencies)
+# dependencies.add("a->d")
+# dependencies.add("a->b") 
+# dependencies.add("ag->b")
+# dependencies.add("b->g")
+# dependencies.add("b->e")
+# dependencies.add("e->b")
+# dependencies.add("e->f")
+# dependencies.add("di->b")
+# dependencies.add("aj->f")
+# dependencies.add("gb->fje")
+# dependencies.add("aj->hd")
+# dependencies.add("i->cg")
+# dependencies.add("a->j")
+# dependencies = sorted(dependencies)
 
-prime_key.add("abc")
-prime_key.add("bai")
-prime_key.add("ace")
-prime_key = sorted(prime_key)
+# prime_key.add("abc")
+# prime_key.add("bai")
+# prime_key.add("ace")
+# prime_key = sorted(prime_key)
+
+
+
+# relation.add("p")
+# relation.add("q")
+# relation.add("r")
+# relation.add("s")
+# relation.add("t")
+# relation.add("u")
+# relation.add("v")
+# relation.add("w")
+# relation.add("x")
+# relation.add("y")
+
+# dependencies.append("pq->r") 
+# dependencies.append("p->st")
+# dependencies.append("q->u")
+# dependencies.append("u->vw")
+# dependencies.append("s->xy")
+
+# prime_key.append("xut")
+# prime_key.append("pqr")
+
+
+
+
+
+
 
 def check_key(check_list):
     for key in prime_key:
@@ -146,9 +173,9 @@ def check_key(check_list):
             if set(key).issubset(set(element)):
                 found_key = True
         if found_key:
-            print("There is key already in the dependencies.")            
+            print("The given set of functional dependencies already includes a key for the relation.")            
             return None
-    print("There is no key in the dependencies, adding:", key)
+    print("The key is not specified in the functional dependencies. The following key will be added: [{}]".format(key))
     return key
    
 
