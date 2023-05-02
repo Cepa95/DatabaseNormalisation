@@ -9,16 +9,16 @@ check_value = []
 # print(check_list)
 
 #PRVI PRIMJER
-relation.add("a")
-relation.add("b")
-relation.add("c")
+# relation.add("a")
+# relation.add("b")
+# relation.add("c")
 
-dependencies.append("a->b")
-dependencies.append("b->a")
-dependencies.append("a->c")
-dependencies.append("c->a")
+# dependencies.append("a->b")
+# dependencies.append("b->a")
+# dependencies.append("a->c")
+# dependencies.append("c->a")
 
-prime_key.append("a")
+# prime_key.append("a")
 
 #DRUGI PRIMJER
 # relation.add("a")
