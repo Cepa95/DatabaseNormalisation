@@ -23,32 +23,12 @@ def check_key():
     relations.third_nf_optimisation.add(big_string)
     return relations.third_nf_optimisation.add(relations.prime_key[0])
 
-# def check_dependencies():
-#     processed = set()
-#     for element in relations.dependencies:
-#         key, value = element.split("->")
-#         temp = key + value
-#         # ako se nadje iti jedna vrijednost u chec_value, preskoci korak
-#         if any(check in temp for check in relations.check_value):
-#             continue
-#         temp = ''.join(sorted(temp))
-#         if temp in processed:
-#             continue
-#         processed.add(temp)
-#         relations.check_list.append(temp)
-#         relations.third_nf_optimisation.add(element)
-#         for element in value:
-#             if element in relations.relation:
-#                 relations.relation.remove(element)
-#             relations.check_value.append(element)
-#     check_key()
-
 def check_dependencies():
     processed = set()
     for element_arrow in relations.dependencies:
         key, value = element_arrow.split("->")
         temp = key + value
-        # ako se nadje iti jedna vrijednost u chec_value, preskoci korak
+        # ako se nadje iti jedna vrijednost u check_value, preskoci korak
         if any(check in temp for check in relations.check_value):
             print(element_arrow, 'not in piF')
             continue
@@ -66,8 +46,6 @@ def check_dependencies():
         big_string = "".join(sorted(relations.relation))
         print(element_arrow, 'in piF => [{}]'.format(temp), 'U [{}]'.format(big_string))
     check_key()
-
-
 
 printf.print_all()
 check_dependencies()
