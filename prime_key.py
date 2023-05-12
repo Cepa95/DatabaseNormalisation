@@ -1,31 +1,16 @@
 import relations
 for main in relations.dependencies:
-    print(main,"=>:")
+    print(main,"=>")
     (main_key,main_value)=main.split("->")
     for i in range(len(relations.dependencies)):
-        #print(set(main_key),"->",set(main_value))
-     #   print("rel len:",len(relations.relation))
-      #  print("main val len:",len(main_value))
-       # print("main:",main_key+""+main_value) 
-        # for el in main_key:
-        #     if set(el).issubset(set(main_value)):
-        #         continue
-        #     else:
         main_value+=main_key
-        # print("main value:",main_value)
-        # print("main key:",main_key)
         for e in relations.dependencies:
             (key,value)=e.split("->")
-            # print("value:",value)
-            # print("val:",val)
-            # print("value:",value
             if set(key).issubset(set(main_value)):
                 main_value+=value
             else:
                 continue
         flag=0
-        #print(main_key,"->",main_value)
-        #potraga optimalnog clana za prosirivanje
         for e in relations.relation:
             for k in relations.dependencies:
                 (ky,v)=k.split("->")
@@ -57,12 +42,6 @@ for e in relations.prime_key:
     (key,value)=e.split("->")
     real_prime_key.append("".join(sorted(key)))
 
-# for e in real_prime_key:
-#     e=sorted(e)
-#     e="".join(e)
-
-# print(set(sorted(real_prime_key)))
 real_prime_key = sorted(list(set(real_prime_key)))
-# print(sorted(real_prime_key))
 print(sorted(real_prime_key, key=len))
 

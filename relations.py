@@ -52,8 +52,8 @@ check_value = []
 
 #ZA PRIMARNE DODATNO
 #DESETI PRIMJER
-# initialize.fill_destination(relation,"a","b","c","d","e","f","g","h","i","j")
-# initialize.fill_destination(dependencies,"a->b","c->b","b->e","i->j","h->g","a->d","d->f","a->h" )
+initialize.fill_destination(relation,"a","b","c","d","e","f","g","h","i","j")
+initialize.fill_destination(dependencies,"a->b","c->b","b->e","i->j","h->g","a->d","d->f","a->h", "h->j" )
 
 #JEDANAESTI PRIMJER
 # initialize.fill_destination(relation,"a","b","c","d","e")
