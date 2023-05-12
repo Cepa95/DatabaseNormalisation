@@ -1,7 +1,5 @@
 import relations
 
-relations.prime_key = []
-
 for dependency in relations.dependencies:
     print(dependency, "=>")
     main_key, main_value = dependency.split("->")
@@ -45,6 +43,5 @@ print(relations.prime_key)
 real_prime_key = sorted(set("".join(sorted(set(entry.split('->')[0])))
                             for entry in relations.prime_key
                             if '->' in entry), key=len)
-
 
 print(real_prime_key)
