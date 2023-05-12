@@ -1,47 +1,50 @@
 import relations
-for main in relations.dependencies:
-    print(main,"=>")
-    (main_key,main_value)=main.split("->")
-    for i in range(len(relations.dependencies)):
-        main_value+=main_key
-        for e in relations.dependencies:
-            (key,value)=e.split("->")
-            if set(key).issubset(set(main_value)):
-                main_value+=value
-            else:
-                continue
-        flag=0
-        for e in relations.relation:
-            for k in relations.dependencies:
-                (ky,v)=k.split("->")
-                if e==ky and not(set(e).issubset(set(main_value))):
-                    main_key+=ky
-                    main_value+=v
-                    flag=1
+
+relations.prime_key = []
+
+for dependency in relations.dependencies:
+    print(dependency, "=>")
+    main_key, main_value = dependency.split("->")
+
+    for _ in relations.dependencies:
+        main_value += main_key
+
+        for entry in relations.dependencies:
+            key, value = entry.split("->")
+            if set(key) <= set(main_value):
+                main_value += value
+
+        found_match = False
+        for entry in relations.relation:
+            for dependency in relations.dependencies:
+                key, value = dependency.split("->")
+                if entry == key and not set(entry) <= set(main_value):
+                    main_key += key
+                    main_value += value
+                    found_match = True
                     break
-            if flag==1:
+            if found_match:
                 break
-        if flag==0:
-            for e in relations.relation:
-                if set(e).issubset(set(main_value)):
+
+        if not found_match:
+            for entry in relations.relation:
+                if set(entry) <= set(main_value):
                     continue
                 else:
-                    main_key+=e
-                    main_value+=e
+                    main_key += entry
+                    main_value += entry
                     break
-    main_key=set(main_key)
-    main_value=set(main_value)
-    main_key="".join(main_key)
-    main_value="".join(main_value)
-    temp=main_key+"->"+main_value
+
+    main_key = "".join(set(main_key))
+    main_value = "".join(set(main_value))
+    temp = main_key + "->" + main_value
     print(temp)
     relations.prime_key.append(temp)
+
 print(relations.prime_key)
-real_prime_key=[]
-for e in relations.prime_key:
-    (key,value)=e.split("->")
-    real_prime_key.append("".join(sorted(key)))
+real_prime_key = sorted(set("".join(sorted(set(entry.split('->')[0])))
+                            for entry in relations.prime_key
+                            if '->' in entry), key=len)
 
-real_prime_key = sorted(list(set(real_prime_key)))
-print(sorted(real_prime_key, key=len))
 
+print(real_prime_key)
