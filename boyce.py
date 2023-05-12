@@ -23,6 +23,30 @@ def check_key():
     relations.third_nf_optimisation.add(big_string)
     return relations.third_nf_optimisation.add(relations.prime_key[0])
 
+# def check_dependencies():
+#     for element in dependencies:
+#         key, value = element.split("->")
+#         flag = False
+#         temp = key + value
+#         for remove in remove_value:
+#             if remove in temp:
+#                 flag = True
+#                 break
+#         if flag:
+#             continue
+#         temp = ''.join(sorted(temp))
+#         for el in check_list:
+#             if temp in el:
+#                 break
+#         else:
+#             check_list.append(temp)
+#             third_nf_optimisation.add(element)
+#             for e in value:
+#                 remove_value.append(e)
+#                 if e in relation:
+#                     relation.remove(e)
+#     check_key()
+
 def check_dependencies():
     processed = set()
     for element_arrow in relations.dependencies:
