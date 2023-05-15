@@ -13,7 +13,7 @@ check_value = []
 #DRUGI PRIMJER
 initialize.fill_destination(relation,"a","b","c","d","e","f","g","h","i","j")
 initialize.fill_destination(dependencies,"di->b","aj->f","gb->fje","aj->hd","i->cg")
-# initialize.fill_destination(prime_key,"aji","adi","abi")
+initialize.fill_destination(prime_key,"aji","adi","abi")
 
 #TRECI PRIMJER
 # initialize.fill_destination(relation,"a","b","c")
