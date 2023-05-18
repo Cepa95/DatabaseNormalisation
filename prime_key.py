@@ -17,7 +17,7 @@ for dependency in relations.dependencies:
         for entry in relations.dependencies:
             key, value = entry.split("->")
 
-            #Provjera ako A->B I B-> POTOME A->C i primjena unije A->B U A->C |=A->BC
+            #Provjera ako A->B I B->C POTOME A->C i primjena unije A->B U A->C |=A->BC
             # if set(key).issubset(set(main_value)):
             if set(key) <= set(main_value):
                 main_value += value
@@ -37,7 +37,7 @@ for dependency in relations.dependencies:
             if found_match:
                 break
         #ako nismo nasli clan koji je ujedno kljuc funkcionalne ovisnosti dodajemo
-        # redom clan koji se ne nalazi s desne strane ograde relacije tj algoritma za primarni kljuc 
+        # redom clan koji se ne nalazi s lijeve strane ograde relacije tj algoritma za primarni kljuc 
         if not found_match:
             for entry in relations.relation:
                 if set(entry) <= set(main_value):
