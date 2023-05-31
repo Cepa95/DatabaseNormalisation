@@ -7,7 +7,9 @@ Dekompozija u BCNF:
 ![Capture](https://user-images.githubusercontent.com/124800316/235660524-8707f6e0-d596-40c7-901f-d636b4b536c4.JPG)
 
 Dekompozicija u 3NF:
-![1dws](https://github.com/Cepa95/SQL_Seminar/assets/124800316/4c4f7c37-3fca-440e-bda9-2bfdbba0c94b)
+![3NF](https://github.com/Cepa95/DatabaseNormalisation/assets/124800316/b5cfc320-2359-497a-92c7-62ccb4705a6e)
+
+
 
 Pronalazak primarnog kljuca:  
-![slika](https://github.com/Cepa95/SQL_Seminar/assets/124800316/4467cb9b-b568-4fe3-bf13-ab93bc7d3019)
+![Prime key](https://github.com/Cepa95/DatabaseNormalisation/assets/124800316/6abdc0f1-69d2-4766-a37a-ac13f89d0ed6)
